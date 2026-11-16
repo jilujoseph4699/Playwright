@@ -1,0 +1,17 @@
+const { expect } = require("@playwright/test")
+
+class Cart{
+    constructor(page)
+    {
+        this.page=page
+        this.item=page.locator(".inventory_item_name")
+        this.checkoutBtn=page.locator("#checkout")
+    }
+    async validateCart(){
+        await expect (this.item).toBeVisible()
+    }
+    async clickCheckOut(){
+        await this.checkoutBtn.click()
+    }
+}
+module.exports=Cart
